@@ -1,11 +1,13 @@
-
 """
-modeule
+Book class module
 """
 
-class Book:
+from abc import ABC, abstractclassmethod
+
+
+class Book(ABC):
     """
-    class
+   abstract book class
     """
 
     __instance = None
@@ -21,7 +23,7 @@ class Book:
     @staticmethod
     def get_instance():
         '''
-        instance
+        returns instance
         '''
         if Book.__instance is None:
             Book.__instance = Book()
@@ -44,9 +46,17 @@ class Book:
             self.count_in_warehouse = self.count_in_warehouse - quantity
             return quantity
 
+    @abstractclassmethod
     def __str__(self):
         '''
         string represantion of my class
         '''
-        return f"Title: {self.title}, Count:{self.count_in_warehouse}"
+        return f"Title: {self.title}"
+    
+    @abstractclassmethod
+    def get_pages_count(self):
+        """
+        returns pages count
+        """
+        pass
     
