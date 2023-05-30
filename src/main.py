@@ -26,5 +26,6 @@ def main():
     print(manager.find_book_by_title("Catcher in the Rye"))
     print(manager.find_book_by_genre("action"))
 
+
 if __name__ == "__main__":
     main()
