@@ -6,6 +6,8 @@ from models.electronic_book import ElectronicBook
 from models.interactive_book import InteractiveBook
 from managers.book_manager import BookManager
 from models.paper_book import PaperBook
+from src.managers.set_manager import SetManager
+from decorators import method_log
 
 
 def main():
@@ -23,8 +25,14 @@ def main():
     manager.add_books(treasure)
     manager.add_books(my_sweet_home)
     manager.add_books(calculus)
-    print(manager.find_book_by_title("Catcher in the Rye"))
-    print(manager.find_book_by_genre("action"))
+
+    print(manager.results())
+    print(manager.result_list())
+    print(manager.zipper())
+    print(manager.__getitem__(2))
+    sm = SetManager(manager)
+    print(sm.__iter__())
+    print(sm.__len__())
 
 
 if __name__ == "__main__":

@@ -9,7 +9,6 @@ class Book(ABC):
     """
    abstract book class
     """
-
     __instance = None
 
     # pylint:disable=too-many-arguments
