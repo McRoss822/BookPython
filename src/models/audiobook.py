@@ -2,7 +2,7 @@
 audio module
 """
 
-from src.models.book import Book
+from models.book import Book
 
 
 class AudioBook(Book):

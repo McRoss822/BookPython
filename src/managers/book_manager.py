@@ -1,7 +1,7 @@
 """
 Class for managing objects of Book class
 """
-from src.decorators import method_log
+from src.decorators import method_log, convention_check
 
 
 class BookManager:
@@ -73,7 +73,8 @@ class BookManager:
         return enumerate(self.list_of_books)
 
     @method_log
-    def zipper(self):
+    @convention_check
+    def zipperKlipper(self):
         """
         returns object + result of method work
         """
@@ -81,6 +82,7 @@ class BookManager:
         object_list = tuple(self.list_of_books)
         return zip(result_list, object_list)
 
+    @convention_check
     def all_arguments_by_type(self, type):
         """
         returns all attributes with given type
