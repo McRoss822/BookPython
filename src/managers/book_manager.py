@@ -74,7 +74,7 @@ class BookManager:
 
     @method_log
     @convention_check
-    def zipperKlipper(self):
+    def zipper(self):
         """
         returns object + result of method work
         """

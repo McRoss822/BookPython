@@ -28,11 +28,14 @@ def main():
 
     print(manager.results())
     print(manager.result_list())
-    print(manager.zipperKlipper())
+    print(manager.zipper())
     print(manager.__getitem__(2))
     sm = SetManager(manager)
     print(sm.__iter__())
     print(sm.__len__())
+    print(catcher.get_book(120))
+
+
 
 
 if __name__ == "__main__":

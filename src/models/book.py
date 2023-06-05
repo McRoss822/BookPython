@@ -1,8 +1,9 @@
 """
 Book class module
 """
-
+from src.decorators import exception_logger
 from abc import ABC, abstractclassmethod, abstractmethod
+from exceptions import OutOfBooksException
 
 
 class Book(ABC):
@@ -19,12 +20,11 @@ class Book(ABC):
         self.genre = genre
         self.count_in_warehouse = count_in_warehouse
 
-
     @staticmethod
     def get_instance():
-        '''
+        """
         returns instance
-        '''
+        """
         if Book.__instance is None:
             Book.__instance = Book()
         else:
@@ -32,9 +32,9 @@ class Book(ABC):
         return Book.__instance
 
     def has_more_books(self):
-        '''
+        """
         returns true if books are in warehouse
-        '''
+        """
         if self is not None:
             return True
 
@@ -44,13 +44,15 @@ class Book(ABC):
         """
         return self.count_in_warehouse
 
+    @exception_logger(OutOfBooksException, "file")
     def get_book(self, quantity):
         """
          returns quantity of books from warehouse
         """
-        if self.has_more_books is not False and quantity < self.count_in_warehouse:
-            self.count_in_warehouse = self.count_in_warehouse - quantity
+        if self.has_more_books is not False and quantity < 64:
             return quantity
+        else:
+            raise OutOfBooksException
 
     @abstractmethod
     def __str__(self):
