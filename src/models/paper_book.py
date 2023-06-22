@@ -1,12 +1,15 @@
 """
 paper book class module
 """
-from models.book import Book
+from src.models.book import Book
+
 
 class PaperBook(Book):
     """
     paper book class inherits from Book class
     """
+    shops = {"Library", "BookStore"}
+
     # pylint:disable=too-many-arguments
     def __init__(self, title, publisher, year, genre, count_in_warehouse, pages_count):
         super().__init__(title, publisher, year, genre, count_in_warehouse)

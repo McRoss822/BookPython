@@ -1,6 +1,7 @@
 """
 Class for managing objects of Book class
 """
+from src.decorators import method_log, convention_check
 
 
 class BookManager:
@@ -10,6 +11,7 @@ class BookManager:
 
     def __init__(self):
         self.list_of_books = []
+        self.index = 0
 
     def add_books(self, book):
         """
@@ -36,7 +38,7 @@ class BookManager:
         if self.list_of_books is not None:
             return iter(self.list_of_books)
         else:
-            raise
+            raise Exception("list is none")
 
     def __len__(self):
         """
@@ -45,7 +47,7 @@ class BookManager:
         if self.list_of_books is not None:
             return len(self.list_of_books)
         else:
-            raise
+            raise Exception("list is empty")
 
     def __getitem__(self, item):
         """
@@ -54,7 +56,7 @@ class BookManager:
         if self.list_of_books and self.list_of_books[item] is not None:
             return self.list_of_books[item]
         else:
-            raise
+            raise Exception("list is none")
 
     def results(self):
         """
@@ -70,6 +72,8 @@ class BookManager:
         """
         return enumerate(self.list_of_books)
 
+    @method_log
+    @convention_check
     def zipper(self):
         """
         returns object + result of method work
@@ -78,11 +82,18 @@ class BookManager:
         object_list = tuple(self.list_of_books)
         return zip(result_list, object_list)
 
+    @convention_check
     def all_arguments_by_type(self, type):
+        """
+        returns all attributes with given type
+        """
         arguments = self.__dict__
-        return {k:v for (k, v) in arguments if v == type}
+        return {k: v for (k, v) in arguments if v == type}
 
     def conditions_list(self):
+        """
+        returns dictionary of conditions of objects
+        """
         return {
             'any': any(book.has_more_books() for book in self.list_of_books),
             'all': all(book.has_more_books() for book in self.list_of_books)

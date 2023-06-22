@@ -4,11 +4,14 @@ audio module
 
 from models.book import Book
 
+
 class AudioBook(Book):
     """
-    audio book class inherits from Book class
+    audiobook class inherits from Book class
     """
     BYTES_PER_MINUTE = 16
+    shops = {"AppStore", "Spotify"}
+
     # pylint:disable=too-many-arguments
     def __init__(self, title, publisher, year, genre, count_in_warehouse, file_size):
         super().__init__(title, publisher, year, genre, count_in_warehouse)

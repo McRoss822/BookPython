@@ -1,14 +1,16 @@
 """
 module
 """
-from models.book import Book
+from src.models.book import Book
 
 
 class InteractiveBook(Book):
     """
     interactive class inherits from Book class
     """
+    shops = {"PlayMarket", "Torrent-Igruha"}
     BYTES_PER_PAGE = 16
+
     # pylint:disable=too-many-arguments
     def __init__(self, title, publisher, year, genre, count_in_warehouse, file_size, format):
         super().__init__(title, publisher, year, genre, count_in_warehouse)
